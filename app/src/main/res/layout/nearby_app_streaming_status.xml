@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RadioButton
+        android:id="@+id/nearby_app_streaming_enable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:checkMarkTint="@color/blue"
+        android:checked="true"
+        android:text="Enable"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="@+id/parent"/>
+
+    <RadioButton
+        android:id="@+id/nearby_app_streaming_disable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:checkMarkTint="@color/blue"
+        android:text="Disable"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/nearby_app_streaming_enable"/>
+
+    <RadioButton
+        android:id="@+id/nearby_app_streaming_not_control"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:checkMarkTint="@color/blue"
+        android:text="Not control bu policy"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/nearby_app_streaming_disable"/>
+
+    <RadioButton
+        android:id="@+id/nearby_app_streaming_allowed_for_same_managed_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:checkMarkTint="@color/blue"
+        android:text="Allowed for same managed account"
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/nearby_app_streaming_not_control"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
