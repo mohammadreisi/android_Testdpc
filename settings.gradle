@@ -1,2 +1,3 @@
 include ':TestDPC'
 project(':TestDPC').projectDir = new File(rootDir, "app")
+include ':reisi_test_module'
