@@ -676,7 +676,7 @@
     <string name="on_network_logs_available_token_failure">Test DPC: Could not retrieve network logs batch %d</string>
 
     <!-- Reisi -->
-    <string name="reisi_nearby_app_streaming">Set nearby app streaming (Mohammad Risi)</string>
+    <string name="reisi_nearby_app_streaming">Set nearby app streaming (Reisi)</string>
 
     <!-- Accessibility -->
     <string name="accessibility_title">Accessibility</string>
