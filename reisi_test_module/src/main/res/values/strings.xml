@@ -1,0 +1,7 @@
+<resources>
+    <string name="enable">Enable </string>
+    <string name="disable">Disable</string>
+    <string name="not_control">Not control by policy</string>
+    <string name="same_managed_account">Allowed for same managed account</string>
+    <string name="provision_mode">Provision mode:</string>
+</resources>

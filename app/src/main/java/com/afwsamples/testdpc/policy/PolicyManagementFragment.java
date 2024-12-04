@@ -96,6 +96,7 @@ import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
 
 import com.afwsamples.testdpc.AddAccountActivity;
+import com.afwsamples.testdpc.BuildConfig;
 import com.afwsamples.testdpc.CrossProfileAppsAllowlistFragment;
 import com.afwsamples.testdpc.CrossProfileAppsFragment;
 import com.afwsamples.testdpc.DeviceAdminReceiver;
@@ -148,6 +149,7 @@ import com.afwsamples.testdpc.profilepolicy.delegation.DelegationFragment;
 import com.afwsamples.testdpc.profilepolicy.permission.ManageAppPermissionsFragment;
 import com.afwsamples.testdpc.transferownership.PickTransferComponentFragment;
 import com.afwsamples.testdpc.util.MainThreadExecutor;
+import com.example.reisi_test_module.ComposeMainActivity;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -178,8 +180,6 @@ import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
-
-import com.afwsamples.testdpc.BuildConfig;
 
 /**
  * Provides several device management functions.
@@ -1062,8 +1062,7 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
                 return true;
 
             case REISI_SET_NEARBY_APP_STREAMING_KEY:
-
-
+                showSetNearbyAppStreamingPrompt();
                 return true;
 
             case SET_ACCESSIBILITY_SERVICES_KEY:
@@ -3385,62 +3384,10 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
     /**
      * Shows a prompt to ask for set nearby app streaming status.
      */
-
+    @TargetApi(VERSION_CODES.S)
     private void showSetNearbyAppStreamingPrompt() {
-        if (getActivity() == null || getActivity().isFinishing()) {
-            return;
-        }
-        AtomicInteger status = new AtomicInteger(2); // -> Enable
-
-        ConstraintLayout nearbyStatusView = (ConstraintLayout) getActivity().getLayoutInflater()
-                .inflate(R.layout.nearby_app_streaming_status, null);
-        final RadioButton enable = nearbyStatusView.findViewById(R.id.nearby_app_streaming_enable);
-        final RadioButton disable = nearbyStatusView.findViewById(R.id.nearby_app_streaming_enable);
-        final RadioButton notControl = nearbyStatusView.findViewById(R.id.nearby_app_streaming_enable);
-        final RadioButton allowForSameAccount = nearbyStatusView.findViewById(R.id.nearby_app_streaming_enable);
-
-        enable.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                buttonView.setChecked(true);
-                status.set(2);
-            } else {
-                buttonView.setChecked(false);
-            }
-        });
-        disable.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                buttonView.setChecked(true);
-                status.set(1);
-            } else {
-                buttonView.setChecked(false);
-            }
-        });
-        notControl.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                buttonView.setChecked(true);
-                status.set(0);
-            } else {
-                buttonView.setChecked(false);
-            }
-        });
-        allowForSameAccount.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                buttonView.setChecked(true);
-                status.set(3);
-            } else {
-                buttonView.setChecked(false);
-            }
-        });
-        new AlertDialog.Builder(getActivity())
-                .setTitle(getString(R.string.install_existing_packages_title))
-                .setView(nearbyStatusView)
-                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                    if (Build.VERSION.SDK_INT >= VERSION_CODES.S) {
-                        mDevicePolicyManager.setNearbyAppStreamingPolicy(status.get());
-                    }
-                })
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
+        Intent intent = new Intent(getActivity(), ComposeMainActivity.class);
+        getContext().startActivity(intent);
     }
 
     @TargetApi(VERSION_CODES.M)
